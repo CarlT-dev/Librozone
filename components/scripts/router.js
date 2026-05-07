@@ -14,6 +14,7 @@ import initSearchPage from "../../client/components/scripts/searchPage.js";
 import initBorrowingsPage from "../../client/components/scripts/borrowingsPage.js";
 import updateNavbarUI from "../ui/updateNav.js";
 import initAdminPanel from "../../admin/components/scripts/adminPanel.js"; 
+import { BASE } from "./basePath.js";
 
 const routes = {
     "#home": {
@@ -27,45 +28,45 @@ const routes = {
         }
     },
     "#login": {
-        template: "../client/components/templates/login.html",
+        template: `${BASE}client/components/templates/login.html`,
         render: initClientLogin
     },
     "#register": {
-        template: "../client/components/templates/register.html",
+        template: `${BASE}client/components/templates/register.html`,
         render: initClientRegister
     },
     "#new": {
-        template: "../client/components/templates/register-details.html",
+        template: `${BASE}client/components/templates/register-details.html`,
         render: initRegisterDetails
     },
     "#search": {
-        template: "../client/components/templates/search.html",
+        template: `${BASE}client/components/templates/search.html`,
         render: initSearchPage
     },
     "#borrowings": {
-        template: "../client/components/templates/borrowings.html",
+        template: `${BASE}client/components/templates/borrowings.html`,
         requiresAuth: true,
         role: "client",
         render: initBorrowingsPage
     },
     "#account/borrowings": {
-        template: "../client/components/templates/borrowings.html",
+        template: `${BASE}client/components/templates/borrowings.html`,
         requiresAuth: true,
         role: "client",
         render: initBorrowingsPage
     },
     "#secret": {
-        template: "../admin/secret/admin-auth.html",
+        template: `${BASE}admin/secret/admin-auth.html`,
         render: initAdminLogin
     },
     "#admin-panel": {
-        template: "../admin/secret/admin-panel.html",
+        template: `${BASE}admin/secret/admin-panel.html`,
         requiresAuth: true,
         role: "admin",
         render: initAdminPanel 
     },
     "404": {
-        template: "../components/templates/page-not-found.html"
+        template: `${BASE}components/templates/page-not-found.html`
     }
 };
 

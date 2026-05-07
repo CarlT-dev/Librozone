@@ -1,5 +1,6 @@
 import DB from "../../../db.js";
 import openUpdateBookModal from "./updateBookModal.js";
+import { BASE } from "../../../components/scripts/basePath.js";
 
 export const createBookInventoryRow = (book, refreshCallback) => {
     const tr = document.createElement("tr");
@@ -23,12 +24,12 @@ export const createBookInventoryRow = (book, refreshCallback) => {
             <span class="inline-flex gap-2 items-center justify-end">
                 <button data-id="${book.id}" class="edit-btn p-1 rounded hover:bg-sky-50 transition-colors" title="Edit">
                     <svg class="w-5 h-5 text-sky-700 hover:text-sky-500 transition-colors">
-                        <use href="/assets/sprite.svg#icon-pen"></use>
+                        <use href="${BASE}assets/sprite.svg#icon-pen"></use>
                     </svg>
                 </button>
                 <button data-id="${book.id}" class="delete-btn p-1 rounded hover:bg-red-50 transition-colors" title="Delete">
                     <svg class="w-5 h-5 fill-red-500 hover:fill-red-400 transition-colors">
-                        <use href="/assets/sprite.svg#icon-trash"></use>
+                        <use href="${BASE}assets/sprite.svg#icon-trash"></use>
                     </svg>
                 </button>
             </span>
