@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-lime: #bef264;
+
+  --animate-slide-in-left:  slide-in-left  0.7s  ease-out forwards;
+  --animate-slide-in-right: slide-in-right 0.7s  ease-out forwards;
+  --animate-slide-out-right: slide-in-right 0.7s  ease-out forwards;
+  --animate-fade-in:        fade-in        0.15s ease-out forwards;
+  --animate-slide-up:       slide-up       0.2s  ease-out forwards;
+  --animate-fade-out:   fade-out   0.15s ease-in  forwards;
+  --animate-slide-down: slide-down 0.2s  ease-in  forwards;
+}
+
+@keyframes fade-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+@keyframes slide-down {
+  from { opacity: 1; transform: translateY(0)    scale(1);    }
+  to   { opacity: 0; transform: translateY(24px) scale(0.97); }
+}
+
+@keyframes slide-in-left {
+  from { transform: translateX(-100%); opacity: 0; }
+  to   { transform: translateX(0);     opacity: 1; }
+}
+
+@keyframes slide-in-right {
+  from { transform: translateX(100%); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+
+@keyframes slide-out-right {
+  from { transform: translateX(0); opacity: 1; }
+  to   { transform: translateX(100%);    opacity: 0; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(24px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);    }
+}

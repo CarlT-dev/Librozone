@@ -1,0 +1,26 @@
+{
+  "name": "libraryborrowsingsystem",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "dev": "concurrently \"postcss css/global.css -o dist/output.css --watch\" \"live-server --host=localhost --port=3000 --entry-file=index.html\"",
+    "build": "postcss css/global.css -o dist/output.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "watch": "^0.13.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.2.4",
+    "autoprefixer": "^10.5.0",
+    "concurrently": "^9.2.1",
+    "live-server": "^1.2.0",
+    "postcss": "^8.5.10",
+    "postcss-cli": "^11.0.1",
+    "tailwindcss": "^4.2.4"
+  }
+}

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/assets/web_logo.png">
+    <link rel="stylesheet" href="dist/output.css">
+    <title>Librozone</title>
+    <style>
+        /* div, header, label, span, main, footer, nav, svg, p, h1, h2, h3, h4, h5, h6 {
+            border: 1px solid red;
+        } */
+
+        body{
+            font-family: sans-serif 'Courier New', Courier, monospace;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="flex flex-col mx-auto min-h-screen">
+        <header class="py-3 px-3 sm:px-4 bg-lime-500 shadow-lg sticky top-0 z-40">
+            <div class="w-full max-w-6xl mx-auto flex sm:flex-row sm:justify-between sm:items-center gap-3">
+                <div class="flex items-center justify-between gap-3">
+                    <a href="#home" class="flex gap-2 items-center hover:cursor-pointer hover:underline hover:decoration-lime-100">
+                        <img src="assets/web_logo.png" class="hidden sm:flex h-8 w-8 rounded-md border-2 border-lime-50" alt="Logo">
+                        <span class="sm:flex font-semibold text-white h-8 items-center justify-center">
+                            <img src="./assets/Librozone.png" class="h-full w-full" alt="Librozone">
+                        </span>
+                    </a>
+                </div>
+                
+                <div class="flex w-full justify-between">
+                    <span id="search" style="display: none;" class="bg-white border border-gray-300 rounded-full flex w-full sm:w-105 md:w-105 justify-start items-center pl-4 overflow-hidden">
+                        <input type="text" id="searchInput" class="bg-white w-full outline-0 py-2 pr-2 text-sm" autocomplete="off" placeholder="Search books by title, author, genre...">
+                        <button id="searchSubmit" type="button" class="flex justify-center items-center h-full text-end border-l border-gray-200 hover:bg-gray-50 active:scale-95 transition px-3">
+                            <svg class="w-6 h-6">
+                                <use href="/assets/sprite.svg#icon-search"></use>
+                            </svg>
+                        </button>
+                    </span>
+                    <div class="flex w-full  justify-end">
+                        <div id="authBtn" style="display: none;" class="flex gap-2">
+                            <button class="flex items-center justify-center border-2 border-lime-100 rounded-lg px-3 py-1 font-semibold text-lime-100 shadow-md hover:shadow-none transition-all">
+                                <a href="#login">Login</a>
+                            </button>
+                            <button class="flex items-center justify-center border-2 border-lime-500 bg-lime-100 text-lime-500 font-semibold rounded-lg px-3 py-1 shadow-md hover:shadow-none transition-all">
+                                <a href="#register">Register</a>
+                            </button>
+                        </div>
+                        <!-- If login  -->
+                        <span id="account-nav" style="display: none;" class="relative flex items-center gap-5">
+        
+                            <div class="relative">
+                                <div id="cart-icon-wrapper" class="flex relative active:scale-90 hover:cursor-pointer p-1">
+                                    <span
+                                        id="cart-badge"
+                                        style="display: none;"
+                                        class="absolute left-[55%] bottom-[60%] min-w-4 h-4 px-0.5
+                                            bg-red-500 border border-white/80 rounded-full
+                                            text-white text-[8px] font-bold
+                                            flex items-center justify-center"
+                                    >0</span>
+                        
+                                    <svg class="w-6 h-6 text-white">
+                                        <use href="/assets/sprite.svg#icon-borrow"></use>
+                                    </svg>
+                                </div>
+                        
+                                <div
+                                    id="cart-dropdown"
+                                    style="display: none;"
+                                    class="absolute right-0 top-10 z-50
+                                        w-[92vw] sm:w-72 bg-white rounded-2xl shadow-2xl border border-gray-100
+                                        flex flex-col overflow-hidden"
+                                >
+                                    <div class="flex items-center justify-between px-4 py-3 border-b border-gray-100">
+                                        <span class="text-sm font-bold text-gray-700">Borrow Cart</span>
+                                        <span id="cart-badge-label" class="text-xs text-lime-600 font-semibold"></span>
+                                    </div>
+                        
+                                    <div
+                                        id="cart-list"
+                                        class="flex flex-col gap-1 overflow-y-auto px-2 py-2"
+                                        style="max-height: 320px;"
+                                    ></div>
+                        
+                                    <div
+                                        id="cart-empty"
+                                        class="flex flex-col items-center justify-center gap-2 py-10 text-gray-300"
+                                    >
+                                        <svg class="w-10 h-10">
+                                            <use href="/assets/sprite.svg#icon-cart"></use>
+                                        </svg>
+                                        <p class="text-sm">Your cart is empty</p>
+                                    </div>
+                        
+                                    <!-- Footer action -->
+                                    <div class="px-4 py-3 border-t border-gray-100">
+                                        <button
+                                            id="cart-proceed-btn"
+                                            class="w-full py-2.5 rounded-xl bg-lime-500 hover:bg-lime-400
+                                                text-white text-sm font-bold
+                                                active:scale-95 transition-all"
+                                        >
+                                            Proceed to Borrow
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <!-- Hamburger menu -->
+                            <svg id="hamburgerBtn" class="w-9 h-9 text-white shadow rounded-lg hover:cursor-pointer active:scale-90 transition">
+                                <use href="/assets/sprite.svg#icon-hamburger"></use>
+                            </svg>
+                        
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main id="app-container" class="grow flex flex-col bg-lime-50"></main>
+        <footer class="flex justify-center items-center bg-lime-500 text-white">&copy; All credits to Librozone</footer>
+    </div>
+    <button class="bg-red-500/70 hover:scale-110 active:scale-100 text-white rounded-2xl p-2 font-semibold border-2 border-white fixed top-[90%] left-[90%]" onclick="localStorage.clear()">Delete</button>
+    <script type="module" src="components/scripts/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<section class="grow flex flex-col">
+    <!-- Progress bar at full (100%) to show completion of step 1 -->
+    <div class="w-full h-1 bg-lime-100 overflow-hidden">
+        <div class="h-full bg-lime-500 w-full"></div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 grow">
+        <!-- Left Column: Full Details Form -->
+        <div class="flex flex-col justify-center items-center p-4 sm:p-6 animate-slide-in-left">
+            <div class="w-full max-w-md border rounded-2xl border-lime-500/20 bg-lime-500/30 p-1 shadow-sm">
+                <div class="rounded-xl bg-white">
+                    <h2 class="text-xl sm:text-2xl p-4 py-4 flex justify-center border-b items-center font-bold text-lime-500/80">
+                        Complete Profile
+                    </h2>
+                    <form id="registerDetailsForm" class="p-6 flex flex-col gap-3">
+                        <!-- Email (autofilled, still editable) -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1" for="detailEmail">Email</label>
+                            <input 
+                                type="email" 
+                                id="detailEmail" 
+                                class="border w-full p-2.5 rounded-2xl border-gray-300 focus:ring-2 focus:ring-lime-500 focus:border-transparent outline-none transition-all bg-lime-50" 
+                                placeholder="Email address"
+                                required/>
+                        </div>
+
+                        <!-- First Name & Last Name side by side -->
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <div class="flex-1">
+                                <label class="block text-sm font-medium text-gray-700 mb-1" for="detailFirstName">First Name</label>
+                                <input 
+                                    type="text" 
+                                    id="detailFirstName" 
+                                    class="border w-full p-2.5 rounded-2xl border-gray-300 focus:ring-2 focus:ring-lime-500 focus:border-transparent outline-none transition-all" 
+                                    placeholder="First name"
+                                    required/>
+                            </div>
+                            <div class="flex-1">
+                                <label class="block text-sm font-medium text-gray-700 mb-1" for="detailLastName">Last Name</label>
+                                <input 
+                                    type="text" 
+                                    id="detailLastName" 
+                                    class="border w-full p-2.5 rounded-2xl border-gray-300 focus:ring-2 focus:ring-lime-500 focus:border-transparent outline-none transition-all" 
+                                    placeholder="Last name"
+                                    required/>
+                            </div>
+                        </div>
+
+                        <!-- Mobile Number -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1" for="detailMobile">Mobile Number</label>
+                            <input 
+                                type="tel" 
+                                id="detailMobile" 
+                                class="border w-full p-2.5 rounded-2xl border-gray-300 focus:ring-2 focus:ring-lime-500 focus:border-transparent outline-none transition-all" 
+                                placeholder="e.g. 09171234567"
+                                pattern="[0-9]{10,15}"
+                                maxlength="11"
+                                required/>
+                        </div>
+
+                        <!-- Password -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1" for="detailPassword">Password</label>
+                            <input 
+                                type="password" 
+                                id="detailPassword" 
+                                class="border w-full p-2.5 rounded-2xl border-gray-300 focus:ring-2 focus:ring-lime-500 focus:border-transparent outline-none transition-all" 
+                                placeholder="Min. 8 characters"
+                                minlength="8"
+                                required/>
+                        </div>
+
+                        <!-- Confirm Password -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1" for="detailConfirmPassword">Confirm Password</label>
+                            <input 
+                                type="password" 
+                                id="detailConfirmPassword" 
+                                class="border w-full p-2.5 rounded-2xl border-gray-300 focus:ring-2 focus:ring-lime-500 focus:border-transparent outline-none transition-all" 
+                                placeholder="Re-enter password"
+                                required/>
+                            <p id="passwordMatchError" class="text-red-500 text-xs mt-1" style="display:none;">Passwords do not match.</p>
+                        </div>
+
+                        <button 
+                            type="submit" 
+                            id="registerSubmitBtn"
+                            class="w-full mt-3 bg-lime-500/90 p-3 rounded-2xl shadow-md text-white font-bold hover:cursor-pointer hover:bg-lime-400 active:scale-95 transition-all duration-200">
+                            Create Account
+                        </button>
+
+                        <p class="text-center text-sm text-gray-500">
+                            Already have an account? <a href="#login" class="text-lime-600 font-semibold hover:underline">Log in</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column: Branding -->
+        <div class="hidden md:flex bg-linear-to-l from-lime-200/90 via-lime-200 to-lime-100 backdrop-blur-md border-l-3 border-white/50 p-10 shadow-xl rounded-l-[100px] justify-center items-center animate-slide-in-right">
+            <div>
+                <h1 class="text-lime-500 text-4xl lg:text-5xl font-black tracking-tighter text-end">Almost There</h1>
+                <p class="text-lime-600/70 text-right font-medium">Complete your profile</p>
+            </div>
+        </div>
+    </div>
+</section>
