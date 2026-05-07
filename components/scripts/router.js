@@ -18,7 +18,7 @@ import { BASE } from "./basePath.js";
 
 const routes = {
     "#home": {
-        template: "../client/components/templates/homepage.html",
+        template: `${BASE}client/components/templates/homepage.html`,
         render: () => {
             renderTrendingCarousel();
             renderFantasyCarousel();
@@ -91,7 +91,7 @@ export const router = async () => {
 
     const route = routes[hash] || routes["404"];
 
-    // ── Auth guard ───────────────────────────────────────────────────────────
+    // Auth guard 
     if (route.requiresAuth) {
         if (!Auth.isLoggedIn()) {
             window.location.hash = "#home";
