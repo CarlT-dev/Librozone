@@ -10,9 +10,9 @@
 <!-- finish navigations in admin panel -->
 make filter in every records in admin panel
 <!-- design register page for student -->
-create profile page
+<!-- create profile page -->
 <!-- create a logout button in admin and client side -->
-think of what can be add in header section
+<!-- think of what can be add in header section -->
 <!-- make home page responsive
 make login page responsive
 make register page responsive
