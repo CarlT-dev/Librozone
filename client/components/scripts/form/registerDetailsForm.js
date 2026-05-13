@@ -10,6 +10,34 @@ const initRegisterDetails = () => {
     const passwordInput = document.getElementById("detailPassword");
     const confirmPasswordInput = document.getElementById("detailConfirmPassword");
     const passwordMatchError = document.getElementById("passwordMatchError");
+    const visibilityBtn = document.getElementById("togglePassword");
+    const confirmPassVisibilityBtn = document.getElementById("toggleConfirmPassword");
+
+    visibilityBtn.addEventListener("click", () => {
+
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+
+        if (type === "text"){
+            visibilityBtn.innerHTML = "hide";
+            
+        } else {
+            visibilityBtn.innerHTML = "show";
+        }
+    })
+
+    confirmPassVisibilityBtn.addEventListener("click", () => {
+
+        const type = confirmPasswordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        confirmPasswordInput.setAttribute('type', type);
+
+        if (type === "text"){
+            confirmPassVisibilityBtn.innerHTML = "hide";
+            
+        } else {
+            confirmPassVisibilityBtn.innerHTML = "show";
+        }
+    })
 
     // Autofill email from step 1
     const pendingEmail = sessionStorage.getItem("pendingRegisterEmail");
