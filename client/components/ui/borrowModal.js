@@ -46,25 +46,24 @@ const showSuccess = (results) => {
 
             ${borrowed.length > 0 ? `
             <div class="w-full border border-lime-100 rounded-xl overflow-hidden text-left">
-                <div class="bg-lime-50 px-4 py-2 text-xs font-semibold text-lime-700 uppercase tracking-wider">Borrowed Books</div>
-                <div class="divide-y divide-gray-100">
+                <div class="bg-lime-50 px-4 py-2 text-xs font-semibold text-lime-700 uppercase tracking-wider overflow-hidden">Borrowed Books</div>
+                <div class="overflow-y-auto divide-y divide-gray-100 max-h-64">
                     ${borrowed.map(r => `
                         <div class="flex items-center gap-3 px-4 py-3">
                             <img src="${r.book.cover}" class="w-8 h-11 object-cover rounded-md shadow-sm shrink-0"
                                  onerror="this.src='https://placehold.co/32x44/d1fae5/16a34a?text=?'"/>
                             <div class="flex-1 min-w-0">
                                 <p class="text-sm font-semibold text-gray-800 truncate">${r.book.title}</p>
-                                <p class="text-xs text-gray-400">Due: <span class="text-lime-600 font-medium">${fmt(r.borrowing.dueAt)}</span></p>
                             </div>
                         </div>
                     `).join("")}
                 </div>
             </div>
             ` : ""}
-
+            <p class="text-xs text-gray-400 italic">Please go to the shop to claim your book${borrowed.length > 1 ? "s" : ""}.</p>
             <button
                 id="borrow-success-close"
-                class="mt-2 w-full py-3 rounded-xl bg-lime-500 hover:bg-lime-400 active:scale-95
+                class="mt-2 w-full py-3 rounded-xl bg-lime-500 hover:cursor-pointer hover:bg-lime-400 active:scale-95
                        text-white font-bold text-sm transition-all"
             >Done</button>
         </div>
@@ -142,12 +141,6 @@ const openBorrowModal = () => {
                             <p class="text-[11px] mt-1 font-medium ${unavailable ? "text-red-400" : "text-lime-600"}">
                                 ${unavailable ? "⚠ Currently unavailable" : `${book.available} copies available`}
                             </p>
-                        </div>
-                        <div class="text-right shrink-0 text-xs text-gray-400">
-                            ${unavailable ? "" : `
-                                <p class="text-gray-500">Due</p>
-                                <p class="font-semibold text-gray-700">${fmt(new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString())}</p>
-                            `}
                         </div>
                     </div>
                 `}).join("")}
