@@ -90,101 +90,102 @@ const openBorrowTransactionModal = (transactionId, onSaved) => {
                     ${badge(txStatus)}
                 </div>
 
-                <div class="rounded-xl border border-gray-100 p-4 flex flex-col gap-3">
-                    <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Set status for all books</p>
-                    <div class="flex flex-wrap gap-3">
-                        <label class="flex items-center gap-2 px-3 py-2 rounded-xl border border-gray-200 cursor-pointer hover:bg-gray-50">
-                            <input id="tx-status-pending" type="radio" name="tx-status" value="pending" ${txStatus === "pending" ? "checked" : ""}/>
-                            <span class="text-sm font-semibold text-gray-700">Pending</span>
-                        </label>
-                        <label class="flex items-center gap-2 px-3 py-2 rounded-xl border border-gray-200 cursor-pointer hover:bg-gray-50">
-                            <input id="tx-status-borrowed" type="radio" name="tx-status" value="borrowed" ${(txStatus === "borrowed" || txStatus === "overdue") ? "checked" : ""}/>
-                            <span class="text-sm font-semibold text-gray-700">Borrowed</span>
-                        </label>
-                        <label class="flex items-center gap-2 px-3 py-2 rounded-xl border border-gray-200 cursor-pointer hover:bg-gray-50">
-                            <input id="tx-status-returned" type="radio" name="tx-status" value="returned" ${txStatus === "returned" ? "checked" : ""}/>
-                            <span class="text-sm font-semibold text-gray-700">Returned</span>
-                        </label>
-                        <label class="flex items-center gap-2 px-3 py-2 rounded-xl border border-red-200 cursor-pointer hover:bg-red-50">
-                            <input id="tx-status-declined" type="radio" name="tx-status" value="declined" ${txStatus === "declined" ? "checked" : ""}/>
-                            <span class="text-sm font-semibold text-red-600">Declined</span>
-                        </label>
-                    </div>
-                    <p class="text-[11px] text-gray-400">
-                        Tip: choose a status here to apply it to every book below, then fine-tune per book if needed.
-                    </p>
-                </div>
+                <div class="flex gap-2">
+                    <div>
+                        <div class="rounded-xl border border-gray-100 p-4 flex flex-col gap-3">
+                            <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Set status for all books</p>
+                            <div class="flex flex-wrap gap-3">
+                                <label class="flex items-center gap-2 px-3 py-2 rounded-xl border border-gray-200 cursor-pointer hover:bg-gray-50">
+                                    <input id="tx-status-pending" type="radio" name="tx-status" value="pending" ${txStatus === "pending" ? "checked" : ""}/>
+                                    <span class="text-sm font-semibold text-gray-700">Pending</span>
+                                </label>
+                                <label class="flex items-center gap-2 px-3 py-2 rounded-xl border border-gray-200 cursor-pointer hover:bg-gray-50">
+                                    <input id="tx-status-borrowed" type="radio" name="tx-status" value="borrowed" ${(txStatus === "borrowed" || txStatus === "overdue") ? "checked" : ""}/>
+                                    <span class="text-sm font-semibold text-gray-700">Borrowed</span>
+                                </label>
+                                <label class="flex items-center gap-2 px-3 py-2 rounded-xl border border-gray-200 cursor-pointer hover:bg-gray-50">
+                                    <input id="tx-status-returned" type="radio" name="tx-status" value="returned" ${txStatus === "returned" ? "checked" : ""}/>
+                                    <span class="text-sm font-semibold text-gray-700">Returned</span>
+                                </label>
+                                <label class="flex items-center gap-2 px-3 py-2 rounded-xl border border-red-200 cursor-pointer hover:bg-red-50">
+                                    <input id="tx-status-declined" type="radio" name="tx-status" value="declined" ${txStatus === "declined" ? "checked" : ""}/>
+                                    <span class="text-sm font-semibold text-red-600">Declined</span>
+                                </label>
+                            </div>
+                            <p class="text-[11px] text-gray-400">
+                                Tip: choose a status here to apply it to every book below, then fine-tune per book if needed.
+                            </p>
+                        </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-                    <div class="p-4 rounded-xl border border-gray-100 bg-gray-50">
-                        <p class="text-[11px] font-semibold text-gray-400 uppercase tracking-wider">Borrowed Date</p>
-                        <p class="text-sm font-semibold text-gray-800 mt-1">${txStatus === "pending" ? "—" : fmt(items[0].borrowedAt)}</p>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                            <div class="p-4 rounded-xl border border-gray-100 bg-gray-50">
+                                <p class="text-[11px] font-semibold text-gray-400 uppercase tracking-wider">Borrowed Date</p>
+                                <p class="text-sm font-semibold text-gray-800 mt-1">${txStatus === "pending" ? "—" : fmt(items[0].borrowedAt)}</p>
+                            </div>
+                            <div class="p-4 rounded-xl border border-gray-100 bg-gray-50">
+                                <p class="text-[11px] font-semibold text-gray-400 uppercase tracking-wider">Due Date</p>
+                                <p class="text-sm font-semibold text-gray-800 mt-1">${txStatus === "pending" ? "—" : fmt(items[0].dueAt)}</p>
+                            </div>
+                            <div class="p-4 rounded-xl border border-gray-100 bg-gray-50">
+                                <p class="text-[11px] font-semibold text-gray-400 uppercase tracking-wider">Books</p>
+                                <p class="text-sm font-semibold text-gray-800 mt-1">${items.length}</p>
+                            </div>
+                        </div>
+                        <p class="text-[11px] text-gray-400 mt-2">
+                            Overdue is automatic when Borrowed and past due.
+                        </p>
                     </div>
-                    <div class="p-4 rounded-xl border border-gray-100 bg-gray-50">
-                        <p class="text-[11px] font-semibold text-gray-400 uppercase tracking-wider">Due Date</p>
-                        <p class="text-sm font-semibold text-gray-800 mt-1">${txStatus === "pending" ? "—" : fmt(items[0].dueAt)}</p>
-                    </div>
-                    <div class="p-4 rounded-xl border border-gray-100 bg-gray-50">
-                        <p class="text-[11px] font-semibold text-gray-400 uppercase tracking-wider">Books</p>
-                        <p class="text-sm font-semibold text-gray-800 mt-1">${items.length}</p>
-                    </div>
-                </div>
 
-                <div class="rounded-xl border border-gray-100 overflow-hidden flex flex-col">
-                    <div class="bg-gray-50 px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider shrink-0">
-                        Book Items (set status per book)
-                    </div>
-                    <div class="divide-y divide-gray-100 overflow-y-auto bg-white" style="max-height: 420px;">
-                        ${bookLines.map((b) => {
-                            const computedOverdue = (b.status === "borrowed" && b.dueAt && new Date(b.dueAt) < new Date());
-                            const displayStatus = computedOverdue ? "overdue" : b.status;
-                            return `
-                                <div class="px-4 py-4 flex flex-col md:flex-row md:items-center gap-4">
-                                    <div class="flex items-center gap-4 min-w-0 flex-1">
-                                        <img
-                                            src="${b.cover}"
-                                            alt="${b.title}"
-                                            class="w-14 h-20 object-cover rounded-lg shadow-sm border border-gray-100 shrink-0"
-                                            onerror="this.src='https://placehold.co/56x80/d1fae5/16a34a?text=?'"
-                                        />
-                                        <div class="min-w-0">
-                                            <p class="text-sm font-semibold text-gray-800 truncate">${b.title}</p>
-                                            <p class="text-xs text-gray-400 truncate">${b.author}</p>
-                                            <div class="mt-2 flex items-center gap-2 flex-wrap">
-                                                <span class="inline-flex items-center justify-center px-2 py-1 rounded-md bg-gray-100 text-[10px] font-bold text-gray-500">
-                                                    QTY: 1
-                                                </span>
-                                                ${badge(displayStatus)}
+                    <div class="rounded-xl border border-gray-100 overflow-hidden flex flex-col">
+                        <div class="bg-gray-50 px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider shrink-0">
+                            Book Items (set status per book)
+                        </div>
+                        <div class="divide-y divide-gray-100 overflow-y-auto bg-white" style="max-height: 420px;">
+                            ${bookLines.map((b) => {
+                                const computedOverdue = (b.status === "borrowed" && b.dueAt && new Date(b.dueAt) < new Date());
+                                const displayStatus = computedOverdue ? "overdue" : b.status;
+                                return `
+                                    <div class="px-4 py-4 flex flex-col md:flex-row md:items-center gap-2">
+                                        <div class="flex justify-evenly items-center gap-4 w-30">
+                                            <img
+                                                src="${b.cover}"
+                                                alt="${b.title}"
+                                                class="w-14 h-20 object-cover rounded-lg shadow-sm border border-gray-100 shrink-0"
+                                                onerror="this.src='https://placehold.co/56x80/d1fae5/16a34a?text=?'"
+                                            />
+                                            <div>
+                                                <p class="text-sm font-semibold text-gray-800 truncate w-25">${b.title}</p>
+                                                <p class="text-xs text-gray-400 truncate">${b.author}</p>
+                                                <div class="mt-2 flex items-center gap-2 flex-wrap">
+                                                    ${badge(displayStatus)}
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="w-full md:w-105">
+                                            <div class="grid grid-cols-2 gap-2">
+                                                <label class="flex items-center gap-2 px-3 py-2 rounded-xl border border-gray-200 cursor-pointer hover:bg-gray-50">
+                                                    <input type="radio" name="item-status-${b.borrowingId}" value="pending" ${b.status === "pending" ? "checked" : ""}/>
+                                                    <span class="text-sm font-semibold text-gray-700">Pending</span>
+                                                </label>
+                                                <label class="flex items-center gap-2 px-3 py-2 rounded-xl border border-gray-200 cursor-pointer hover:bg-gray-50">
+                                                    <input type="radio" name="item-status-${b.borrowingId}" value="borrowed" ${b.status === "borrowed" ? "checked" : ""}/>
+                                                    <span class="text-sm font-semibold text-gray-700">Borrowed</span>
+                                                </label>
+                                                <label class="flex items-center gap-2 px-3 py-2 rounded-xl border border-gray-200 cursor-pointer hover:bg-gray-50">
+                                                    <input type="radio" name="item-status-${b.borrowingId}" value="returned" ${b.status === "returned" ? "checked" : ""}/>
+                                                    <span class="text-sm font-semibold text-gray-700">Returned</span>
+                                                </label>
+                                                <label class="flex items-center gap-2 px-3 py-2 rounded-xl border border-red-200 cursor-pointer hover:bg-red-50">
+                                                    <input type="radio" name="item-status-${b.borrowingId}" value="declined" ${b.status === "declined" ? "checked" : ""}/>
+                                                    <span class="text-sm font-semibold text-red-600">Declined</span>
+                                                </label>
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="w-full md:w-105">
-                                        <div class="grid grid-cols-2 gap-2">
-                                            <label class="flex items-center gap-2 px-3 py-2 rounded-xl border border-gray-200 cursor-pointer hover:bg-gray-50">
-                                                <input type="radio" name="item-status-${b.borrowingId}" value="pending" ${b.status === "pending" ? "checked" : ""}/>
-                                                <span class="text-sm font-semibold text-gray-700">Pending</span>
-                                            </label>
-                                            <label class="flex items-center gap-2 px-3 py-2 rounded-xl border border-gray-200 cursor-pointer hover:bg-gray-50">
-                                                <input type="radio" name="item-status-${b.borrowingId}" value="borrowed" ${b.status === "borrowed" ? "checked" : ""}/>
-                                                <span class="text-sm font-semibold text-gray-700">Borrowed</span>
-                                            </label>
-                                            <label class="flex items-center gap-2 px-3 py-2 rounded-xl border border-gray-200 cursor-pointer hover:bg-gray-50">
-                                                <input type="radio" name="item-status-${b.borrowingId}" value="returned" ${b.status === "returned" ? "checked" : ""}/>
-                                                <span class="text-sm font-semibold text-gray-700">Returned</span>
-                                            </label>
-                                            <label class="flex items-center gap-2 px-3 py-2 rounded-xl border border-red-200 cursor-pointer hover:bg-red-50">
-                                                <input type="radio" name="item-status-${b.borrowingId}" value="declined" ${b.status === "declined" ? "checked" : ""}/>
-                                                <span class="text-sm font-semibold text-red-600">Declined</span>
-                                            </label>
-                                        </div>
-                                        <p class="text-[11px] text-gray-400 mt-2">
-                                            Overdue is automatic when Borrowed and past due.
-                                        </p>
-                                    </div>
-                                </div>
-                            `;
-                        }).join("")}
+                                `;
+                            }).join("")}
+                        </div>
                     </div>
                 </div>
             </div>
